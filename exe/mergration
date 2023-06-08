@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+unless Dir.exist?("./docs/mermaid")
+  puts 'Directory docs/mermaid does not exist'
+  return
+end
+
 puts 'mergration'

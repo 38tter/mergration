@@ -7,6 +7,10 @@ module Mergration
   class MigrationGenerator < ::Rails::Generators::Base
     include ::Rails::Generators::Migration
 
+    def self.next_migration_number(dirname)
+      ::ActiveRecord::Generators::Base.next_migration_number(dirname)
+    end
+
     protected
 
     def add_mergration_migration(template, extra_options = {})

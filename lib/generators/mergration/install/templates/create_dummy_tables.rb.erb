@@ -1,0 +1,7 @@
+class CreateDummyTables < ActiveRecord::Migration<%= migration_version %>
+  def change
+    create_table :dummy_tables do |t|
+      t.string   :hoge,     null: false
+    end
+  end
+end

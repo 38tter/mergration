@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'rails/generatos'
-require 'rails/generatos/active_record'
+require 'rails/generators'
+require 'rails/generators/active_record'
 
 module Mergration
   class MigrationGenerator < ::Rails::Generators::Base

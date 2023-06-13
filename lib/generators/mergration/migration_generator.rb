@@ -23,11 +23,12 @@ module Mergration
           "#{template}.rb.erb",
           "db/migrate/#{template}.rb",
           { migration_version: migration_version,
-            table_name: 'hoge',
-            attributes: [
-              { type: 'int', name: 'price', constraint: nil },
-              { type: 'string', name: 'name', constraint: nil }
-            ] }.merge(extra_options)
+            # table_name: 'hoge',
+            # attributes: [
+            #   { type: 'int', name: 'price', constraint: nil },
+            #   { type: 'string', name: 'name', constraint: nil }
+            # ]
+          }.merge(extra_options)
         )
       end
     end

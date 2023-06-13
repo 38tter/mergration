@@ -1,9 +1,9 @@
 class CreateDummyTables < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table <%= table_name.to_sym %> do |t|
-      <% attributes.each do |attribute| %>
-      t.<%= attribute[:type] %> <%= attribute[:name].to_sym %>
-      <% end %>
+      <%# attributes.each do |attribute| %>
+#      t.<%#= attribute[:type] %> <%#= attribute[:name].to_sym %>
+      <%# end %>
     end
   end
 end

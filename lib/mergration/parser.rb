@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'kramdown/document'
+require 'kramdown'
 require 'kramdown-mermaid/parser'
 
 module Mergration

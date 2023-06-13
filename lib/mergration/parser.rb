@@ -1,19 +1,17 @@
 # frozen_string_literal: true
 
+require 'kramdown/document'
 require 'kramdown-mermaid/parser'
 
 module Mergration
   class Parser
     def self.parse(path)
       raise "File does not exist: #{path}" unless File.exists?(path)
-    end
 
-    def document_hash_ast
-      Kramdown::Document.new(text, input: 'KramdownErDiagram').to_hash_ast
-    end
+      text = File.read(path)
 
-    def entities
-      document_hash_ast[:children].select { |k, _| k[:type] == :entity }.map(&:options)
+      ast = Kramdown::Document.new(text, input: 'KramdownErDiagram').to_hash_ast
+      ast[:children].select { |k, _| k[:type] == :entity }.map { |e| e[:options] }
     end
   end
 end

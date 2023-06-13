@@ -18,6 +18,7 @@ module Mergration
 
     def parse_file
       files = Dir.glob(File.expand_path('docs/mermaid/*.md'))
+      raise 'No markdown files found on docs/mermaid' if files.blank?
 
       results = []
       files.each do |file|

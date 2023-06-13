@@ -13,13 +13,12 @@ module Mergration
       parse_file
       add_mergration_migration(
         'create_dummy_tables',
-        table_name: 'hoge',
-        # attributes: [
-        #   { type: 'int', name: 'price', constraint: nil },
-        #   { type: 'string', name: 'name', constraint: nil }
-        # ]
+        table_name: table_name,
+        attributes: attributes,
       )
     end
+
+    private
 
     def parse_file
       files = Dir.glob(File.expand_path('docs/mermaid/*.md'))
@@ -30,6 +29,17 @@ module Mergration
         results << Mergration::Parser.parse(file)
       end
       results
+    end
+
+    def table_name
+      'hoge'
+    end
+
+    def attributes
+      [
+        { type: 'int', name: 'price', constraint: nil },
+        { type: 'string', name: 'name', constraint: nil }
+      ]
     end
   end
 end

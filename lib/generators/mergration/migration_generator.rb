@@ -21,7 +21,7 @@ module Mergration
       else
         migration_template(
           "#{template}.rb.erb",
-          "db/migrate/#{template}.rb",
+          "db/migrate/create_#{extra_options[:entity]}.rb",
           { migration_version: migration_version }.merge(extra_options)
         )
       end

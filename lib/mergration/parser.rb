@@ -11,6 +11,7 @@ module Mergration
       raise "File does not exist: #{path}" unless File.exist?(path)
 
       text = File.read(path)
+      puts text
 
       ast = Kramdown::Document.new(text, input: DOCUMENT_INPUT).to_hash_ast
       ast[:children].select { |k, _| k[:type] == :entity }.map { |e| e[:options] }

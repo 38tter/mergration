@@ -12,7 +12,12 @@ module Mergration
     def create_migration_file
       parse_file
       add_mergration_migration(
-        'create_dummy_tables'
+        'create_dummy_tables',
+        table_name: 'hoge',
+        attributes: [
+          { type: 'int', name: 'price', constraint: nil },
+          { type: 'string', name: 'name', constraint: nil }
+        ]
       )
     end
 

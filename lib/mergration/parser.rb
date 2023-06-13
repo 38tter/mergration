@@ -6,7 +6,7 @@ require 'kramdown-mermaid/parser'
 module Mergration
   class Parser
     def self.parse(path)
-      raise "File does not exist: #{path}" unless File.exists?(path)
+      raise "File does not exist: #{path}" unless File.exist?(path)
 
       text = File.read(path)
 

@@ -36,7 +36,6 @@ module Mergration
       files.each do |file|
         results << Mergration::Parser.parse(file)
       end
-      puts results
       results
     end
 

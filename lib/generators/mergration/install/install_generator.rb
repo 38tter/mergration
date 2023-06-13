@@ -2,6 +2,7 @@
 
 require_relative '../migration_generator'
 require_relative '../../../mergration/parser'
+require 'active_support/core_ext/string/inflections'
 
 module Mergration
   class InstallGenerator < MigrationGenerator
@@ -10,12 +11,17 @@ module Mergration
     desc 'Generates a migration from entities described on mermaid.'
 
     def create_migration_file
-      parse_file
-      add_mergration_migration(
-        'create_dummy_tables',
-        table_name: table_name,
-        attributes: attributes,
-      )
+      files = parse_file
+      files.each do |file|
+        @entity = file[:entity]
+        @attributes = file[:attributes]
+        add_mergration_migration(
+          'create_dummy_tables',
+          table_name: table_name,
+          entity: entity,
+          attributes: attributes,
+        )
+      end
     end
 
     private
@@ -32,14 +38,15 @@ module Mergration
     end
 
     def table_name
-      'hoge'
+      @entity.camelize.pluralize
+    end
+
+    def entity
+      @entity
     end
 
     def attributes
-      [
-        { type: 'int', name: 'price', constraint: nil },
-        { type: 'string', name: 'name', constraint: nil }
-      ]
+      @attributes
     end
   end
 end

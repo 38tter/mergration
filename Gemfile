@@ -13,4 +13,6 @@ gem 'rspec', '~> 3.0'
 
 gem 'rubocop', '~> 1.21'
 
+gem 'kramdown'
+
 gem 'kramdown-mermaid', git: 'git@github.com:38tter/kramdown-mermaid.git'

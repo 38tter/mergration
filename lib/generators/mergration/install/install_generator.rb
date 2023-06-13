@@ -13,14 +13,16 @@ module Mergration
     def create_migration_file
       files = parse_file
       files.each do |file|
-        @entity = file[:entity]
-        @attributes = file[:attributes]
-        add_mergration_migration(
-          'create_dummy_tables',
-          table_name: table_name,
-          entity: entity,
-          attributes: attributes,
-        )
+        file.each do |f|
+          @entity = f[:entity]
+          @attributes = f[:attributes]
+          add_mergration_migration(
+            'create_dummy_tables',
+            table_name: table_name,
+            entity: entity,
+            attributes: attributes,
+          )
+        end
       end
     end
 

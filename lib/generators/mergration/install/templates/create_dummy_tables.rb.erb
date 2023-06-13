@@ -1,4 +1,4 @@
-class Create<%= table_name %>> < ActiveRecord::Migration<%= migration_version %>
+class Create<%= table_name %> < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table :<%= entity %> do |t|
       <% attributes.each do |attribute| %>

@@ -12,7 +12,7 @@ module Mergration
 
       text = File.read(path)
 
-      ast = Kramdown::Document.new(text, :input => DOCUMENT_INPUT).to_hash_ast
+      ast = Kramdown::Document.new(text, input: DOCUMENT_INPUT).to_hash_ast
       ast[:children].select { |k, _| k[:type] == :entity }.map { |e| e[:options] }
     end
   end

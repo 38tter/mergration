@@ -14,10 +14,10 @@ module Mergration
       add_mergration_migration(
         'create_dummy_tables',
         table_name: 'hoge',
-        attributes: [
-          { type: 'int', name: 'price', constraint: nil },
-          { type: 'string', name: 'name', constraint: nil }
-        ]
+        # attributes: [
+        #   { type: 'int', name: 'price', constraint: nil },
+        #   { type: 'string', name: 'name', constraint: nil }
+        # ]
       )
     end
 

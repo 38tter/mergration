@@ -1,9 +1,7 @@
 class Create<%= table_name %> < ActiveRecord::Migration<%= migration_version %>
   def change
     create_table :<%= entity %> do |t|
-      <% attributes.each do |attribute| %>
-      t.<%= attribute[:type] %> :<%= attribute[:name] %>
-      <% end %>
+      <% attributes.each do |attribute| %> t.<%= attribute[:type] %> :<%= attribute[:name] %> <% end %>
     end
   end
 end

@@ -5,6 +5,7 @@ require 'kramdown-mermaid/parser'
 
 module Mergration
   class ParseError < StandardError; end
+
   class Parser
     DOCUMENT_INPUT = 'KramdownErDiagram'
 

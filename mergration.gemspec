@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Uncomment to register a new dependency of your gem
+  spec.add_dependency 'activerecord'
   spec.add_dependency 'activesupport'
   spec.add_dependency 'kramdown'
   spec.add_dependency 'kramdown-mermaid'

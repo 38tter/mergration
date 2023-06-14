@@ -44,7 +44,7 @@ module Mergration
     end
 
     def entity
-      @entity
+      @entity.pluralize
     end
 
     def attributes

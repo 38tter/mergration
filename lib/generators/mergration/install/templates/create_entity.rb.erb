@@ -3,7 +3,7 @@ class Create<%= table_name %> < ActiveRecord::Migration<%= migration_version %>
     create_table :<%= entity %> do |t|
       <% attributes.each do |attribute| -%>
       t.<%= attribute[:type] %> :<%= attribute[:name] %>
-      <% end %>
+      <% end -%>
 
       t.timestamps
     end

@@ -17,7 +17,7 @@ module Mergration
           @entity = f[:entity]
           @attributes = f[:attributes]
           add_mergration_migration(
-            'create_dummy_tables',
+            'create_entity',
             table_name: table_name,
             entity: entity,
             attributes: attributes,

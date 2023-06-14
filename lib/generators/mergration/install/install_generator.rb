@@ -8,6 +8,7 @@ require 'active_record/connection_adapters/abstract/schema_definitions'
 module Mergration
   class TypeError < StandardError; end
   class NotFoundError < StandardError; end
+
   class InstallGenerator < MigrationGenerator
     source_root File.expand_path('templates', __dir__)
 
@@ -58,6 +59,17 @@ module Mergration
       @entity.downcase.pluralize
     end
 
-    attr_reader :attributes
+    def attributes
+      @attributes.map do |attribute|
+        case attribute[:constraint]
+        when 'FK'
+          attribute[:constraint] = 'foreign_key: true'
+        when 'UK'
+          attribute[:constraint] = 'index: { unique: true }'
+        end
+
+        attribute
+      end
+    end
   end
 end

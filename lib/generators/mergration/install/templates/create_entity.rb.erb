@@ -4,6 +4,8 @@ class Create<%= table_name %> < ActiveRecord::Migration<%= migration_version %>
       <% attributes.each do |attribute| %>
       t.<%= attribute[:type] %> :<%= attribute[:name] %>
       <% end %>
+
+      t.timestamps
     end
   end
 end

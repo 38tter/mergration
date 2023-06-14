@@ -23,7 +23,7 @@ module Mergration
           @attributes.each do |attribute|
             type = attribute[:type]
             unless ActiveRecord::ConnectionAdapters::Table.instance_methods.include?(type.to_sym)
-              raise Mergration::TypeError, "Invalid #{type} is given"
+              raise Mergration::TypeError, "Invalid type '#{type}' is given"
             end
           end
 

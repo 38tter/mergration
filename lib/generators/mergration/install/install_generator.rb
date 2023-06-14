@@ -20,7 +20,7 @@ module Mergration
             'create_entity',
             table_name: table_name,
             entity: entity,
-            attributes: attributes,
+            attributes: attributes
           )
         end
       end
@@ -47,8 +47,6 @@ module Mergration
       @entity.pluralize
     end
 
-    def attributes
-      @attributes
-    end
+    attr_reader :attributes
   end
 end

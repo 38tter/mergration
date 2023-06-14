@@ -40,11 +40,11 @@ module Mergration
     end
 
     def table_name
-      @entity.camelize.pluralize
+      @entity.downcase.camelize.pluralize
     end
 
     def entity
-      @entity.pluralize
+      @entity.downcase.pluralize
     end
 
     attr_reader :attributes

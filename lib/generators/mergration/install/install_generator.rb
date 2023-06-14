@@ -6,6 +6,8 @@ require 'active_support/core_ext/string/inflections'
 require 'active_record/connection_adapters/abstract/schema_definitions'
 
 module Mergration
+  class TypeError < StandardError; end
+  class NotFoundError < StandardError; end
   class InstallGenerator < MigrationGenerator
     source_root File.expand_path('templates', __dir__)
 
@@ -21,7 +23,7 @@ module Mergration
           @attributes.each do |attribute|
             type = attribute[:type]
             unless ActiveRecord::ConnectionAdapters::Table.instance_methods.include?(type.to_sym)
-              raise Mergration::Error "Invalid #{type} is given"
+              raise Mergration::TypeError, "Invalid #{type} is given"
             end
           end
 
@@ -39,7 +41,7 @@ module Mergration
 
     def parse_file
       files = Dir.glob(File.expand_path('docs/mermaid/*.md'))
-      raise Mergration::Error, 'No markdown files found on docs/mermaid' if files.blank?
+      raise Mergration::NotFoundError, 'No markdown files found on docs/mermaid' if files.blank?
 
       results = []
       files.each do |file|

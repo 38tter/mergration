@@ -4,11 +4,12 @@ require 'kramdown'
 require 'kramdown-mermaid/parser'
 
 module Mergration
+  class ParseError < StandardError; end
   class Parser
     DOCUMENT_INPUT = 'KramdownErDiagram'
 
     def self.parse(path)
-      raise Mergration::Error, "File does not exist: #{path}" unless File.exist?(path)
+      raise Mergration::ParseError, "File does not exist: #{path}" unless File.exist?(path)
 
       text = File.read(path)
 

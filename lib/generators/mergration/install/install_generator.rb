@@ -3,6 +3,7 @@
 require_relative '../migration_generator'
 require_relative '../../../mergration/parser'
 require 'active_support/core_ext/string/inflections'
+require 'active_record/connection_adapters/abstract/schema_definitions'
 
 module Mergration
   class InstallGenerator < MigrationGenerator
@@ -16,6 +17,14 @@ module Mergration
         file.each do |f|
           @entity = f[:entity]
           @attributes = f[:attributes]
+
+          @attributes.each do |attribute|
+            type = attribute[:type]
+            unless ActiveRecord::ConnectionAdapters::Table.instance_methods.include?(type.to_sym)
+              raise Mergration::Error "Invalid #{type} is given"
+            end
+          end
+
           add_mergration_migration(
             'create_entity',
             table_name: table_name,

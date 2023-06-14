@@ -61,12 +61,14 @@ module Mergration
 
     def attributes
       @attributes.map do |attribute|
-        case attribute[:constraint]
-        when 'FK'
-          attribute[:constraint] = 'foreign_key: true'
-        when 'UK'
-          attribute[:constraint] = 'index: { unique: true }'
-        end
+        attribute[:constraint] = case attribute[:constraint]
+                                 when 'FK'
+                                   'foreign_key: true'
+                                 when 'UK'
+                                   'index: { unique: true }'
+                                 else
+                                   ''
+                                 end
 
         attribute
       end

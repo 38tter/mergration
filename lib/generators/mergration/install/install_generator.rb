@@ -9,6 +9,10 @@ module Mergration
   class TypeError < StandardError; end
   class NotFoundError < StandardError; end
 
+  # See https://github.com/rails/rails/blob/984c3ef2775781d47efa9f541ce570daa2434a80/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L257-L258
+  TYPES = %i[bigint binary boolean date datetime decimal float integer json string text time timestamp
+             virtual references].freeze
+
   class InstallGenerator < MigrationGenerator
     source_root File.expand_path('templates', __dir__)
 
@@ -61,6 +65,11 @@ module Mergration
 
     def attributes
       @attributes.map do |attribute|
+        unless TYPES.include? attribute[:type].to_sym
+          raise Mergration::TypeError,
+                "Invalid type #{attribute[:type]} for attribute #{attribute[:name]}"
+        end
+
         attribute[:constraint] = '' if attribute[:constraint] == 'PK' # currentyly not support PK
         attribute[:constraint] = 'foreign_key: true' if attribute[:constraint] == 'FK'
         attribute[:constraint] = 'index: { unique: true }' if attribute[:constraint] == 'UK'

@@ -7,7 +7,7 @@ module Mergration
   class ParseError < StandardError; end
 
   class Parser
-    DOCUMENT_INPUT = 'KramdownErDiagram'
+    DOCUMENT_INPUT = 'KramdownMermaid'
 
     def self.parse(path)
       raise Mergration::ParseError, "File does not exist: #{path}" unless File.exist?(path)

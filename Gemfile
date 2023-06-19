@@ -19,4 +19,4 @@ gem 'activesupport'
 
 gem 'kramdown'
 
-gem 'kramdown-mermaid', git: 'git@github.com:38tter/kramdown-mermaid.git'
+gem 'kramdown-mermaid'

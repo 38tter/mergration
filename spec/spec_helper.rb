@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+ENV["RAILS_ENV"] ||= "test"
+ENV["DB"] ||= "sqlite"
+
 require 'mergration'
 
 RSpec.configure do |config|

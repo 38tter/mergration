@@ -37,6 +37,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'kramdown'
   spec.add_dependency 'kramdown-mermaid'
 
+  spec.add_development_dependency "generator_spec", "~> 0.9.4"
+  spec.add_development_dependency "rspec-rails", "~> 5.0.2"
+  spec.add_development_dependency "pry-byebug"
+  spec.add_development_dependency "sqlite3", "~> 1.4"
+
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
 end

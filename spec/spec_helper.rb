@@ -16,3 +16,14 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+Bundler.setup
+
+require "active_record/railtie"
+require "mergration"
+require "rspec/rails"
+
+require File.expand_path("test_app/config/environment", __dir__)
+
+require_relative 'support/mergration_spec_migrator'
+::MergrationSpecMigrator.new.migrate

@@ -7,6 +7,7 @@ Mergration gem generates migration files from markdown files written in Mermaid.
 Add this line to your application's Gemfile:
 
 ```ruby
+gem 'kramdown-mermaid'
 gem 'mergration', git: 'git@github.com:38tter/mergration.git'
 ```
 

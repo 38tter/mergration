@@ -18,6 +18,7 @@ module Mergration
       files = parse_file
       files.each do |file|
         file.each do |f|
+          puts f
           next unless f[:type] == :entity
 
           @entity = f[:options][:entity]

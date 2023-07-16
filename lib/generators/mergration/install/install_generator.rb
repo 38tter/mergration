@@ -18,8 +18,10 @@ module Mergration
       files = parse_file
       files.each do |file|
         file.each do |f|
-          @entity = f[:entity]
-          @attributes = f[:attributes]
+          next unless f[:type] == :entity
+
+          @entity = f[:options][:entity]
+          @attributes = f[:options][:attributes]
 
           @attributes.each do |attribute|
             type = attribute[:type]

@@ -1,13 +1,13 @@
-# [WIP] Mergration
+# Mergration
 
-This gem is now work in progress.
+Mergration gem generates migration files from markdown files written in Mermaid.js syntax.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mergration'
+gem 'mergration', git: 'git@github.com:38tter/mergration.git'
 ```
 
 And then execute:
@@ -20,7 +20,48 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Let's say you write down ER diagram on `docs/mermaid/hoge_subscription.md` in Mermaid.js syntax, something like
+
+```mermaid
+erDiagram %% write ome comment here
+
+  hoge_subscriptions {
+    bigint id PK
+    integer price
+    string name
+    date start_on
+    date end_on
+    datetime disabled_at
+    references account PK
+    references user FK
+  }
+```
+
+and then you can run mergration generator and migration file would be generated like:
+
+```shell
+$ bin/rails generate mergration:install
+Running via Spring preloader in process 73574
+      create  db/migrate/20230716192207_create_hoge_subscriptions.rb
+$ cat db/migrate/20230716192207_create_hoge_subscriptions.rb
+class CreateHogeSubscriptions < ActiveRecord::Migration[6.1]
+  def change
+    create_table :hoge_subscriptions do |t|
+      t.bigint :id
+      t.integer :price
+      t.string :name
+      t.date :start_on
+      t.date :end_on
+      t.datetime :disabled_at
+      t.references :account
+      t.references :user, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
+
+```
 
 ## Development
 

@@ -22,6 +22,21 @@ Or install it yourself as:
 
 Let's say you write down ER diagram on `docs/mermaid/hoge_subscription.md` in Mermaid.js syntax, something like
 
+```
+erDiagram %% write ome comment here
+
+  hoge_subscriptions {
+    bigint id PK
+    integer price
+    string name
+    date start_on
+    date end_on
+    datetime disabled_at
+    references account PK
+    references user FK
+  }
+```
+
 ```mermaid
 erDiagram %% write ome comment here
 
@@ -36,6 +51,7 @@ erDiagram %% write ome comment here
     references user FK
   }
 ```
+
 
 and then you can run mergration generator and migration file would be generated like:
 

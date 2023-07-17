@@ -33,7 +33,7 @@ erDiagram %% write ome comment here
     date start_on
     date end_on
     datetime disabled_at
-    references account PK
+    references account FK
     references user FK
   }
 ```
@@ -48,7 +48,7 @@ erDiagram %% write ome comment here
     date start_on
     date end_on
     datetime disabled_at
-    references account PK
+    references account FK
     references user FK
   }
 ```
@@ -70,7 +70,7 @@ class CreateHogeSubscriptions < ActiveRecord::Migration[6.1]
       t.date :start_on
       t.date :end_on
       t.datetime :disabled_at
-      t.references :account
+      t.references :account, foreign_key: true
       t.references :user, foreign_key: true
 
       t.timestamps

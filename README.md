@@ -8,8 +8,7 @@ Entity and Relations can be written in [Mermaid.js syntax](https://mermaid.js.or
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'kramdown-mermaid'
-gem 'mergration', git: 'git@github.com:38tter/mergration.git'
+gem 'mergration'
 ```
 
 And then execute:

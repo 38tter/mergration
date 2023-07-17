@@ -26,8 +26,8 @@ Or install it yourself as:
 Let's say you write down ER diagram on `docs/mermaid/hoge_subscription.md` in Mermaid.js syntax, something like
 
 ```
-erDiagram %% write ome comment here
-
+erDiagram
+  %% write some comments here
   hoge_subscriptions {
     bigint id PK
     integer price
@@ -41,8 +41,8 @@ erDiagram %% write ome comment here
 ```
 
 ```mermaid
-erDiagram %% write ome comment here
-
+erDiagram
+  %% write some comments here
   hoge_subscriptions {
     bigint id PK
     integer price

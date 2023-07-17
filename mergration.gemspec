@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = 'Convert mermaid ER diagram to a migration file'
   spec.description = 'Convert mermaid ER diagram to a migration file'
-  spec.homepage = 'https://rubygems.org/gems/mergration'
+  spec.homepage = 'https://github.com/38tter/mergration'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
 
